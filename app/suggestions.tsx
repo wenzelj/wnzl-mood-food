@@ -10,7 +10,7 @@ const SuggestionCard = ({ item, icon, onPress }) => (
   </TouchableOpacity>
 );
 
-const SuggestionList = ({ title, items, icon, onEndReached }) => (
+const SuggestionList = ({ title, items, icon, router }) => (
   <View>
     <Text style={styles.sectionTitle}>{icon} {title}</Text>
     {items.map((item, index) => (
@@ -71,8 +71,8 @@ export default function SuggestionsScreen() {
         <Text style={styles.title}>Here are some suggestions for when you're feeling {mood.toLowerCase()}:</Text>
 
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
-          <SuggestionList title="Best Meals" items={suggestions.meals} icon="🥘" />
-          <SuggestionList title="Quick Snacks" items={suggestions.snacks} icon="🥄" />
+          <SuggestionList title="Best Meals" items={suggestions.meals} icon="🥘" router={router} />
+          <SuggestionList title="Quick Snacks" items={suggestions.snacks} icon="🥄" router={router} />
 
           <View style={styles.card}>
             <Text style={styles.cardTitle}>🧠 Why These?</Text>
