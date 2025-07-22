@@ -1,15 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Image } from 'expo-image';
 
 const moods = [
-  { name: 'Happy', emoji: require('../assets/images/emoji1.png') },
-  { name: 'Sad', emoji: require('../assets/images/emoji2.png') },
-  { name: 'Angry', emoji: require('../assets/images/emoji3.png') },
-  { name: 'Anxious', emoji: require('../assets/images/emoji4.png') },
-  { name: 'Tired', emoji: require('../assets/images/emoji5.png') },
-  { name: 'Bored', emoji: require('../assets/images/emoji6.png') },
+  { name: 'Happy', emoji: '😊' },
+  { name: 'Sad', emoji: '😢' },
+  { name: 'Angry', emoji: '😠' },
+  { name: 'Anxious', emoji: '😟' },
+  { name: 'Tired', emoji: '😴' },
+  { name: 'Bored', emoji: '😑' },
 ];
 
 export default function HomeScreen() {
@@ -21,7 +20,7 @@ export default function HomeScreen() {
 
   const renderMood = ({ item }) => (
     <TouchableOpacity style={styles.moodContainer} onPress={() => handleMoodSelect(item)}>
-      <Image source={item.emoji} style={styles.moodEmoji} />
+      <Text style={styles.moodEmojiText}>{item.emoji}</Text>
       <Text style={styles.moodText}>{item.name}</Text>
     </TouchableOpacity>
   );
@@ -62,6 +61,9 @@ const styles = StyleSheet.create({
   moodEmoji: {
     width: 100,
     height: 100,
+  },
+  moodEmojiText: {
+    fontSize: 80,
   },
   moodText: {
     marginTop: 10,
