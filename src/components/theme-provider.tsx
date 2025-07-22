@@ -1,10 +1,15 @@
-"use client"
-
 import * as React from "react"
 import { createContext, useContext, useEffect, useState } from "react"
-import { ThemeProviderProps } from "next-themes/dist/types"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Theme = "dark" | "light" | "system"
+
+type ThemeProviderProps = {
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
+  value?: string;
+};
 
 type ThemeContextType = {
   theme: Theme
@@ -16,39 +21,28 @@ const ThemeContext = createContext<ThemeContextType | null>(null)
 export function ThemeProvider({
   children,
   defaultTheme = "system",
-  value: _value,
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme")
-      return (savedTheme && (savedTheme === "dark" || savedTheme === "light" || savedTheme === "system")
-        ? savedTheme
-        : defaultTheme) as Theme
-    }
-    return defaultTheme as Theme
-  })
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
 
   useEffect(() => {
-    const root = window.document.documentElement
-    root.classList.remove("light", "dark")
-
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light"
-      root.classList.add(systemTheme)
-      return
-    }
-
-    root.classList.add(theme)
-  }, [theme])
+    const getTheme = async () => {
+      try {
+        const savedTheme = await AsyncStorage.getItem("theme") as Theme | null;
+        if (savedTheme) {
+          setTheme(savedTheme);
+        }
+      } catch (e) {
+        console.error("Failed to load theme.", e);
+      }
+    };
+    getTheme();
+  }, []);
 
   const value: ThemeContextType = {
     theme,
     setTheme: (theme: Theme) => {
-      localStorage.setItem("theme", theme)
+      AsyncStorage.setItem("theme", theme);
       setTheme(theme)
     },
   }
