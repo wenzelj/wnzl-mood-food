@@ -1,6 +1,28 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+
+const SuggestionCard = ({ item, icon, onPress }) => (
+  <TouchableOpacity style={styles.suggestionCard} onPress={onPress}>
+    <Text style={styles.suggestionIcon}>{icon}</Text>
+    <Text style={styles.suggestionText}>{item}</Text>
+  </TouchableOpacity>
+);
+
+const SuggestionList = ({ title, items, icon, router }) => (
+  <View>
+    <Text style={styles.sectionTitle}>{icon} {title}</Text>
+    {items.map((item, index) => (
+      <SuggestionCard
+        key={index}
+        item={item}
+        icon={icon}
+        onPress={() => router.push({ pathname: '/recipe', params: { meal: item } })}
+      />
+    ))}
+  </View>
+);
 
 const suggestionsData = {
   Happy: {
@@ -35,55 +57,53 @@ const suggestionsData = {
   },
 };
 
-const InfoCard = ({ title, content }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <View style={styles.card}>
-      <TouchableOpacity onPress={() => setExpanded(!expanded)}>
-        <Text style={styles.cardTitle}>{title}</Text>
-      </TouchableOpacity>
-      {expanded && <Text style={styles.cardContent}>{content}</Text>}
-    </View>
-  );
-};
-
 export default function SuggestionsScreen() {
   const { mood } = useLocalSearchParams();
   const router = useRouter();
   const suggestions = suggestionsData[mood] || suggestionsData.Happy;
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>You said: "{mood}"</Text>
-
-      <Text style={styles.sectionTitle}>🥘 Best Meals:</Text>
-      {suggestions.meals.map((meal, index) => (
-        <TouchableOpacity key={index} onPress={() => router.push({ pathname: '/recipe', params: { meal } })}>
-          <Text style={styles.suggestionText}>- {meal}</Text>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
-      ))}
+        <Text style={styles.title}>Here are some suggestions for when you're feeling {mood.toLowerCase()}:</Text>
 
-      <Text style={styles.sectionTitle}>🥄 Quick Snacks:</Text>
-      {suggestions.snacks.map((snack, index) => (
-        <TouchableOpacity key={index} onPress={() => router.push({ pathname: '/recipe', params: { meal: snack } })}>
-          <Text style={styles.suggestionText}>- {snack}</Text>
-        </TouchableOpacity>
-      ))}
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+          <SuggestionList title="Best Meals" items={suggestions.meals} icon="🥘" router={router} />
+          <SuggestionList title="Quick Snacks" items={suggestions.snacks} icon="🥄" router={router} />
 
-      <InfoCard title="🧠 Why These?" content={suggestions.why} />
-    </ScrollView>
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>🧠 Why These?</Text>
+            <Text style={styles.cardContent}>{suggestions.why}</Text>
+          </View>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
   container: {
+    flex: 1,
     padding: 20,
+  },
+  backButton: {
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
+  },
+  scrollViewContent: {
+    paddingBottom: 20,
   },
   sectionTitle: {
     fontSize: 20,
@@ -91,16 +111,37 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
   },
+  suggestionCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  suggestionIcon: {
+    fontSize: 24,
+    marginRight: 15,
+  },
   suggestionText: {
     fontSize: 16,
-    marginLeft: 10,
-    marginBottom: 5,
+    flex: 1,
   },
   card: {
     marginTop: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     padding: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   cardTitle: {
     fontSize: 18,
