@@ -18,7 +18,7 @@ const SuggestionList = ({ title, items, icon, router }) => (
         key={index}
         item={item}
         icon={icon}
-        onPress={() => router.push({ pathname: '/recipe', params: { meal: item } })}
+        onPress={() => router.push({ pathname: '/meal', params: { meal: item } })}
       />
     ))}
   </View>

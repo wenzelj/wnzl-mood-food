@@ -4,13 +4,24 @@ import { useLocalSearchParams } from 'expo-router';
 import { recipes } from './data';
 
 export default function RecipeScreen() {
-  const { meal } = useLocalSearchParams();
-  const recipe = recipes[meal]?.[0];
+  const { recipeId } = useLocalSearchParams();
+
+  const findRecipeById = (id) => {
+    for (const meal in recipes) {
+      const recipe = recipes[meal].find(r => r.idMeal === id);
+      if (recipe) {
+        return recipe;
+      }
+    }
+    return null;
+  };
+
+  const recipe = findRecipeById(recipeId);
 
   if (!recipe) {
     return (
       <View style={styles.centered}>
-        <Text>No recipe found for {meal}.</Text>
+        <Text>No recipe found for ID {recipeId}.</Text>
       </View>
     );
   }
