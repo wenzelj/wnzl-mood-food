@@ -1,39 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
+import { recipes } from './data';
 
 export default function RecipeScreen() {
   const { meal } = useLocalSearchParams();
-  const [recipe, setRecipe] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
-        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`);
-        const data = await response.json();
-        if (data.meals) {
-          setRecipe(data.meals[0]);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (meal) {
-      fetchRecipe();
-    }
-  }, [meal]);
-
-  if (loading) {
-    return (
-      <View style={styles.centered}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
+  const recipe = recipes[meal]?.[0];
 
   if (!recipe) {
     return (
