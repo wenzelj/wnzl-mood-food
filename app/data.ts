@@ -54,6 +54,27 @@ export const recipes = {
       "strImageSource": null,
       "strCreativeCommonsConfirmed": null,
       "dateModified": null
+    },
+    {
+      "idMeal": "52771",
+      "strMeal": "Easy Homemade Pizza Dough",
+      "strMealThumb": "https://www.allrecipes.com/thmb/boLGGXZqRcr5jWnjtiRloulR1vE=/282x188/filters:no_upscale():max_bytes(150000):strip_icc()/ALR-20171-quick-and-easy-pizza-crust-VAT-4x3-2-229693959a224d749b062d4eb8983351.jpg",
+      "strInstructions": "1. Gather all ingredients. Preheat oven to 450 degrees F (230 degrees C), and lightly grease a pizza pan. \n 2. Place warm water in a bowl; add yeast and sugar. Mix and let stand until creamy, about 10 minutes. \n 3. Add flour, oil, and salt to the yeast mixture; beat until smooth. You can do this by hand or use a stand mixer fitted with a dough hook to make it easier. \n 4. Let rest for 5 minutes. \n 5. Turn dough out onto a lightly floured surface and pat or roll into a 12-inch circle. \n 6. Transfer to the prepared pizza pan. \n 7. Spread crust with sauce and toppings of your choice. \n 8. Bake in the preheated oven until golden brown, 15 to 20 minutes. Remove from the oven and let cool for 5 minutes before serving.",
+      "strIngredient1": "1 (.25 ounce) package active dry yeast",
+      "strIngredient2": "1 teaspoon white sugar",
+      "strIngredient3": "1 cup warm water (110 degrees F/45 degrees C)",
+      "strIngredient4": "2 ½ cups bread flour",
+      "strIngredient5": "2 tablespoons olive oil",
+      "strIngredient6": "1 teaspoon salt",
+      "strMeasure1": "1",
+      "strMeasure2": "1 tsp",
+      "strMeasure3": "1 cup",
+      "strMeasure4": "2.5 cups",
+      "strMeasure5": "2 tbsp",
+      "strMeasure6": "1 tsp",
+      "strSource": "https://www.allrecipes.com/recipe/20171/quick-and-easy-pizza-crust/",
+      "strCategory": "Pizza",
+      "strArea": "Italian"
     }
   ],
   "Sushi": [
@@ -111,6 +132,35 @@ export const recipes = {
       "strImageSource": null,
       "strCreativeCommonsConfirmed": null,
       "dateModified": null
+    },
+    {
+      "idMeal": "52772",
+      "strMeal": "Homemade Sushi",
+      "strMealThumb": "https://www.allrecipes.com/thmb/CBOcP0zp71lR2bn-KUMkgCB92RA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/24228-Sushi-roll-ddmfs-4x3-2914-1839f746d9334814a7a5d93ed45ba082.jpg",
+      "strInstructions": "1. Gather all ingredients. Preheat the oven to 300 degrees F (150 degrees C). \n 2. Bring water to a boil in a medium pot; stir in rice. Reduce heat to medium-low, cover, and simmer until rice is tender and water has been absorbed, 20 to 25 minutes. \n 3. Mix rice vinegar, sugar, and salt in a small bowl. Gently stir into cooked rice in the pot and set aside. \n 4. Lay nori sheets on a baking sheet. \n 5. Heat nori in the preheated oven until warm, 1 to 2 minutes. \n 6. Center 1 nori sheet on a bamboo sushi mat. Use wet hands to spread a thin layer of rice on top. Arrange 1/4 of the crabmeat, avocado, cucumber, and pickled ginger over rice in a line down the center. \n 7. Lift one end of the mat and roll it tightly over filling to make a complete roll. Repeat with remaining ingredients. \n 8. Use a wet, sharp knife to cut each roll into 4 to 6 slices.",
+      "strIngredient1": "1 ⅓ cups water",
+      "strIngredient2": "⅔ cup uncooked short-grain white rice",
+      "strIngredient3": "3 tablespoons rice vinegar",
+      "strIngredient4": "3 tablespoons white sugar",
+      "strIngredient5": "1 ½ teaspoons salt",
+      "strIngredient6": "4 sheets nori seaweed sheets",
+      "strIngredient7": "½ pound imitation crabmeat, flaked",
+      "strIngredient8": "1 avocado - peeled, pitted, and sliced",
+      "strIngredient9": "½ cucumber, peeled, cut into small strips",
+      "strIngredient10": "2 tablespoons pickled ginger",
+      "strMeasure1": "1 1/3 cups",
+      "strMeasure2": "2/3 cup",
+      "strMeasure3": "3 tbsp",
+      "strMeasure4": "3 tbsp",
+      "strMeasure5": "1.5 tsp",
+      "strMeasure6": "4 sheets",
+      "strMeasure7": "0.5 lbs",
+      "strMeasure8": "1",
+      "strMeasure9": "0.5",
+      "strMeasure10": "2 tbsp",
+      "strSource": "https://www.allrecipes.com/recipe/24228/sushi-roll/",
+      "strCategory": "Sushi",
+      "strArea": "Japanese"
     }
   ],
   "Pasta": [
@@ -168,6 +218,29 @@ export const recipes = {
       "strImageSource": null,
       "strCreativeCommonsConfirmed": null,
       "dateModified": null
+    },
+    {
+      "idMeal": "52773",
+      "strMeal": "Pesto Pasta",
+      "strMealThumb": "https://www.allrecipes.com/thmb/SV2xyYezS5Iv4gjOhuWTgoUN71Y=/160x90/filters:no_upscale():max_bytes(150000):strip_icc()/AR-RM-11887-pesto-pasta-ddmfs-3x4-deed54c61faa4c95a4cd467e5f4066ab.jpg",
+      "strInstructions": "1. Gather all ingredients. \n 2. Fill a large pot with lightly salted water and bring to a rolling boil. Stir in pasta and return to a boil. Cook pasta uncovered, stirring occasionally, until tender yet firm to the bite, about 8 to 10 minutes. Drain and transfer into a large bowl. \n 3. Meanwhile, heat oil in a frying pan over medium-low heat. Add onion; cook and stir until softened, about 3 minutes. \n 4. Stir in pesto, salt, and pepper until warmed through. \n 5. Add pesto mixture to hot pasta; stir in grated cheese and toss well to coat.",
+      "strIngredient1": "1 (16 ounce) package pasta",
+      "strIngredient2": "2 tablespoons olive oil",
+      "strIngredient3": "½ cup chopped onion",
+      "strIngredient4": "2 ½ tablespoons pesto or more to taste",
+      "strIngredient5": "salt to taste",
+      "strIngredient6": "freshly ground black pepper to taste",
+      "strIngredient7": "2 tablespoons grated Parmesan cheese",
+      "strMeasure1": "1 package",
+      "strMeasure2": "2 tbsp",
+      "strMeasure3": "0.5 cup",
+      "strMeasure4": "2.5 tbsp",
+      "strMeasure5": "to taste",
+      "strMeasure6": "to taste",
+      "strMeasure7": "2 tbsp",
+      "strSource": "https://www.allrecipes.com/recipe/11887/pesto-pasta/",
+      "strCategory": "Pasta",
+      "strArea": "Italian"
     }
   ],
   "Tacos": [
@@ -280,6 +353,21 @@ export const recipes = {
       "strImageSource": null,
       "strCreativeCommonsConfirmed": null,
       "dateModified": null
+    },
+    {
+      "idMeal": "52774",
+      "strMeal": "Slow Cooker Chicken Tacos",
+      "strMealThumb": "https://www.allrecipes.com/thmb/EGOc81dDbRKxt919MolM66gPR9g=/282x188/filters:no_upscale():max_bytes(150000):strip_icc()/242342-fiesta-slow-cooker-shredded-chicken-tacos-ddmfs-3X2-0902-775cf5010b5b46cdbdf2ca50993628a9.jpg",
+      "strInstructions": "1. Gather all ingredients. \n 2. Combine chicken broth and taco seasoning mix in a bowl. \n 3. Place chicken in a slow cooker. Pour chicken broth mixture over chicken. \n 4. Cook on Low for 6 to 8 hours. Shred chicken with two forks.",
+      "strIngredient1": "1 cup chicken broth",
+      "strIngredient2": "3 tablespoons taco seasoning mix",
+      "strIngredient3": "1 pound skinless, boneless chicken breasts",
+      "strMeasure1": "1 cup",
+      "strMeasure2": "3 tbsp",
+      "strMeasure3": "1 lb",
+      "strSource": "https://www.allrecipes.com/recipe/242342/fiesta-slow-cooker-shredded-chicken-tacos/",
+      "strCategory": "Tacos",
+      "strArea": "Mexican"
     }
   ],
   "Chicken soup": [
