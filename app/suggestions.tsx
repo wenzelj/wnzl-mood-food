@@ -71,8 +71,8 @@ export default function SuggestionsScreen() {
         <Text style={styles.title}>Here are some suggestions for when you're feeling {mood.toLowerCase()}:</Text>
 
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
-          <SuggestionList title="Best Meals" items={suggestions.meals} icon="🥘" router={router} />
-          <SuggestionList title="Quick Snacks" items={suggestions.snacks} icon="🥄" router={router} />
+          <SuggestionList title="Best Meals" items={suggestions.meals} router={router} />
+          <SuggestionList title="Quick Snacks" items={suggestions.snacks} router={router} />
 
           <View style={styles.card}>
             <Text style={styles.cardTitle}>🧠 Why These?</Text>
