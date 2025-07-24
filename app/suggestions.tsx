@@ -78,6 +78,10 @@ export default function SuggestionsScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>Here are some suggestions for when you're feeling {mood.toLowerCase()}:</Text>
 
+        <TouchableOpacity style={styles.searchButton} onPress={() => router.push('/search')}>
+          <Text style={styles.searchButtonText}>Search for a recipe</Text>
+        </TouchableOpacity>
+
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           <SuggestionList title="Best Meals" items={suggestions.meals} router={router} />
           <SuggestionList title="Quick Snacks" items={suggestions.snacks} router={router} />
@@ -154,6 +158,18 @@ const styles = StyleSheet.create({
   },
   cardContent: {
     marginTop: 10,
+    fontSize: 16,
+  },
+  searchButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  searchButtonText: {
+    color: '#fff',
     fontSize: 16,
   },
 });
