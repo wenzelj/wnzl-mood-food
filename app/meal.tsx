@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { recipes } from './data';
@@ -14,6 +14,22 @@ export default function MealScreen() {
   const { meal } = useLocalSearchParams();
   const router = useRouter();
   const recipeList = recipes[meal] || [];
+
+  useEffect(() => {
+    if (recipeList.length === 1) {
+      router.replace({ pathname: '/recipe', params: { recipeId: recipeList[0].idMeal } });
+    }
+  }, [recipeList, router]);
+
+  if (recipeList.length === 1) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <Text>Loading recipe...</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>

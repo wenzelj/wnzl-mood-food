@@ -10,19 +10,30 @@ const SuggestionCard = ({ item, icon, onPress }) => (
   </TouchableOpacity>
 );
 
-const SuggestionList = ({ title, items, icon, router }) => (
-  <View>
-    <Text style={styles.sectionTitle}>{icon} {title}</Text>
-    {items.map((item, index) => (
-      <SuggestionCard
-        key={index}
-        item={item}
-        icon={icon}
-        onPress={() => router.push({ pathname: '/meal', params: { meal: item } })}
-      />
-    ))}
-  </View>
-);
+const SuggestionList = ({ title, items, icon, router }) => {
+
+  const handlePress = (item) => {
+    if (items.length === 1) {
+      router.push({ pathname: '/recipe', params: { meal: item } });
+    } else {
+      router.push({ pathname: '/meal', params: { meal: item } });
+    }
+  };
+
+  return (
+    <View>
+      <Text style={styles.sectionTitle}>{icon} {title}</Text>
+      {items.map((item, index) => (
+        <SuggestionCard
+          key={index}
+          item={item}
+          icon={icon}
+          onPress={() => handlePress(item)}
+        />
+      ))}
+    </View>
+  );
+};
 
 const suggestionsData = {
   Happy: {
