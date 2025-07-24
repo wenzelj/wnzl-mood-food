@@ -83,7 +83,7 @@ export default function SuggestionsScreen() {
           <SuggestionList title="Quick Snacks" items={suggestions.snacks} router={router} />
 
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>🧠 Why These?</Text>
+            <Text style={styles.cardTitle}>Why These?</Text>
             <Text style={styles.cardContent}>{suggestions.why}</Text>
           </View>
         </ScrollView>
