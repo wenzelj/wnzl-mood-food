@@ -1,10 +1,33 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { recipes } from './data';
 
 export default function RecipeScreen() {
   const { recipeId } = useLocalSearchParams();
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const checkFavorite = async () => {
+      const favorites = JSON.parse(await AsyncStorage.getItem('favorites') || '[]');
+      setIsFavorite(favorites.includes(recipeId));
+    };
+    checkFavorite();
+  }, [recipeId]);
+
+  const toggleFavorite = async () => {
+    const favorites = JSON.parse(await AsyncStorage.getItem('favorites') || '[]');
+    if (isFavorite) {
+      const newFavorites = favorites.filter((id) => id !== recipeId);
+      await AsyncStorage.setItem('favorites', JSON.stringify(newFavorites));
+      setIsFavorite(false);
+    } else {
+      const newFavorites = [...favorites, recipeId];
+      await AsyncStorage.setItem('favorites', JSON.stringify(newFavorites));
+      setIsFavorite(true);
+    }
+  };
 
   const findRecipeById = (id) => {
     for (const meal in recipes) {
@@ -35,7 +58,12 @@ export default function RecipeScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>{recipe.strMeal}</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>{recipe.strMeal}</Text>
+        <TouchableOpacity onPress={toggleFavorite}>
+          <Text style={styles.favoriteButton}>{isFavorite ? '❤️' : '🤍'}</Text>
+        </TouchableOpacity>
+      </View>
       <Image source={{ uri: recipe.strMealThumb }} style={styles.image} />
 
       <Text style={styles.sectionTitle}>Ingredients</Text>
@@ -58,10 +86,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    flex: 1,
+  },
+  favoriteButton: {
+    fontSize: 30,
   },
   image: {
     width: '100%',
