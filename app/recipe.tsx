@@ -7,6 +7,7 @@ import { recipes } from './data';
 export default function RecipeScreen() {
   const { recipeId } = useLocalSearchParams();
   const [isFavorite, setIsFavorite] = useState(false);
+   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const checkFavorite = async () => {
@@ -56,6 +57,7 @@ export default function RecipeScreen() {
     }
   }
 
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
@@ -64,8 +66,9 @@ export default function RecipeScreen() {
           <Text style={styles.favoriteButton}>{isFavorite ? '❤️' : '🤍'}</Text>
         </TouchableOpacity>
       </View>
-      {recipe.strMealThumb ? (
-        <Image source={{ uri: recipe.strMealThumb }} style={styles.image} />
+  
+      {recipe.strMealThumb && !imageError ? (
+        <Image source={{ uri: recipe.strMealThumb }} style={styles.image}  onError={() => setImageError(true)} />
       ) : null}
 
       <Text style={styles.sectionTitle}>Ingredients</Text>
