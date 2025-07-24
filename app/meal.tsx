@@ -18,9 +18,6 @@ export default function MealScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={24} color="black" />
-        </TouchableOpacity>
         <Text style={styles.title}>Recipes for {meal}</Text>
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           {recipeList.map((recipe, index) => (
@@ -44,9 +41,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-  },
-  backButton: {
-    marginBottom: 20,
   },
   title: {
     fontSize: 24,
