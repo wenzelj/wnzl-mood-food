@@ -64,7 +64,9 @@ export default function RecipeScreen() {
           <Text style={styles.favoriteButton}>{isFavorite ? '❤️' : '🤍'}</Text>
         </TouchableOpacity>
       </View>
-      <Image source={{ uri: recipe.strMealThumb }} style={styles.image} />
+      {recipe.strMealThumb ? (
+        <Image source={{ uri: recipe.strMealThumb }} style={styles.image} />
+      ) : null}
 
       <Text style={styles.sectionTitle}>Ingredients</Text>
       {ingredients.map((ingredient, index) => (
