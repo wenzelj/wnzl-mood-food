@@ -35,6 +35,12 @@ export default function HomeScreen() {
         numColumns={2}
         contentContainerStyle={styles.moodList}
       />
+      <TouchableOpacity
+        style={styles.favoritesButton}
+        onPress={() => router.push('/favorites')}
+      >
+        <Text style={styles.favoritesButtonText}>Go to Favorites</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -68,5 +74,18 @@ const styles = StyleSheet.create({
   moodText: {
     marginTop: 10,
     fontSize: 18,
+  },
+  favoritesButton: {
+    position: 'absolute',
+    bottom: 30,
+    right: 30,
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+  },
+  favoritesButtonText: {
+    color: '#fff',
+    fontSize: 16,
   },
 });
