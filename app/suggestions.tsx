@@ -65,9 +65,6 @@ export default function SuggestionsScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={24} color="black" />
-        </TouchableOpacity>
         <Text style={styles.title}>Here are some suggestions for when you're feeling {mood.toLowerCase()}:</Text>
 
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -92,9 +89,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-  },
-  backButton: {
-    marginBottom: 20,
   },
   title: {
     fontSize: 24,
