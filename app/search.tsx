@@ -12,9 +12,19 @@ export default function SearchScreen() {
     setQuery(text);
     if (text.length > 2) {
       const allRecipes = Object.values(recipes).flat();
-      const filteredRecipes = allRecipes.filter(recipe =>
-        recipe.strMeal.toLowerCase().includes(text.toLowerCase())
-      );
+      const filteredRecipes = allRecipes.filter(recipe => {
+        const searchText = text.toLowerCase();
+        if (recipe.strMeal.toLowerCase().includes(searchText)) {
+          return true;
+        }
+        for (let i = 1; i <= 20; i++) {
+          const ingredient = recipe[`strIngredient${i}`];
+          if (ingredient && ingredient.toLowerCase().includes(searchText)) {
+            return true;
+          }
+        }
+        return false;
+      });
       setResults(filteredRecipes);
     } else {
       setResults([]);
