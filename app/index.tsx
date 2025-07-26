@@ -1,46 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Image } from 'expo-image';
 
-const moods = [
-  { name: 'Happy', emoji: '😊' },
-  { name: 'Sad', emoji: '😢' },
-  { name: 'Angry', emoji: '😠' },
-  { name: 'Anxious', emoji: '😟' },
-  { name: 'Tired', emoji: '😴' },
-  { name: 'Bored', emoji: '😑' },
-];
-
-export default function HomeScreen() {
+export default function WelcomeScreen() {
   const router = useRouter();
-
-  const handleMoodSelect = (mood) => {
-    router.push({ pathname: '/suggestions', params: { mood: mood.name } });
-  };
-
-  const renderMood = ({ item }) => (
-    <TouchableOpacity style={styles.moodContainer} onPress={() => handleMoodSelect(item)}>
-      <Text style={styles.moodEmojiText}>{item.emoji}</Text>
-      <Text style={styles.moodText}>{item.name}</Text>
-    </TouchableOpacity>
-  );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>How are you feeling today?</Text>
-      <FlatList
-        data={moods}
-        renderItem={renderMood}
-        keyExtractor={(item) => item.name}
-        numColumns={2}
-        contentContainerStyle={styles.moodList}
-      />
-      <TouchableOpacity
-        style={styles.favoritesButton}
-        onPress={() => router.push('/favorites')}
-      >
-        <Text style={styles.favoritesButtonText}>Go to Favorites</Text>
-      </TouchableOpacity>
+      <Image source={require('../assets/images/background-image.png')} style={styles.backgroundImage} />
+      <View style={styles.content}>
+        <Text style={styles.title}>Welcome to MoodMeals</Text>
+        <Text style={styles.subtitle}>"Eat with how you feel."</Text>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/home')}>
+          <Text style={styles.buttonText}>Get Started</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -50,42 +25,41 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+  },
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    width: '100%',
   },
   title: {
-    fontSize: 24,
+    fontSize: 48,
     fontWeight: 'bold',
-    marginBottom: 20,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 10,
   },
-  moodList: {
-    alignItems: 'center',
+  subtitle: {
+    fontSize: 24,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 50,
   },
-  moodContainer: {
-    alignItems: 'center',
-    margin: 15,
+  button: {
+    backgroundColor: '#fff',
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 25,
   },
-  moodEmoji: {
-    width: 100,
-    height: 100,
-  },
-  moodEmojiText: {
-    fontSize: 80,
-  },
-  moodText: {
-    marginTop: 10,
+  buttonText: {
     fontSize: 18,
-  },
-  favoritesButton: {
-    position: 'absolute',
-    bottom: 30,
-    right: 30,
-    backgroundColor: '#007BFF',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 20,
-  },
-  favoritesButtonText: {
-    color: '#fff',
-    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
   },
 });
